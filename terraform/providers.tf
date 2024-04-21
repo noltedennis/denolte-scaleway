@@ -11,7 +11,7 @@ terraform {
     bucket                      = "denolte-terraform"
     key                         = "kapsule.tfstate"
     region                      = "fr-par"
-    endpoints {
+    endpoints = {
       s3 = "https://s3.fr-par.scw.cloud"
     }
     skip_credentials_validation = true

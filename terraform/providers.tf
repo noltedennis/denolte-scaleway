@@ -6,6 +6,17 @@ terraform {
     }
   }
   required_version = ">= 1.8"
+
+  backend "s3" {
+    bucket                      = "denolte-terraform"
+    key                         = "kapsule.tfstate"
+    region                      = "fr-par"
+    endpoint                    = "https://s3.fr-par.scw.cloud"
+    skip_credentials_validation = true
+    skip_region_validation      = true
+    # Need terraform>=1.6.1
+    skip_requesting_account_id  = true
+  }
 }
 
 provider "scaleway" {

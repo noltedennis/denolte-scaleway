@@ -16,14 +16,23 @@ resource "scaleway_vpc_private_network" "this" {
   }
 }
 
+resource "scaleway_vpc_public_gateway_ip" "this" {
+  project_id = scaleway_account_project.this.id
+}
+
 resource "scaleway_vpc_public_gateway" "this" {
   name       = "denolte"
   type       = "VPC-GW-S"
   project_id = scaleway_account_project.this.id
+  ip_id      = scaleway_vpc_public_gateway_ip.this.id
 }
 
-resource "scaleway_vpc_public_gateway_ip" "this" {
-  project_id = scaleway_account_project.this.id
+resource "scaleway_vpc_gateway_network" "this" {
+  gateway_id         = scaleway_vpc_public_gateway.this.id
+  private_network_id = scaleway_vpc_private_network.this.id
+  ipam_config {
+    push_default_route = true
+  }
 }
 
 resource "scaleway_k8s_cluster" "this" {

@@ -30,7 +30,7 @@ resource scaleway_vpc_public_gateway_ip "this" {
 resource "scaleway_k8s_cluster" "this" {
   name    = "denolte"
   type    = "kapsule"
-  version = "1.24"
+  version = "1.29"
   cni     = "cilium"
   private_network_id = scaleway_vpc_private_network.this.id
   delete_additional_resources = true

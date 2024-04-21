@@ -23,4 +23,5 @@ terraform {
 provider "scaleway" {
   zone   = "fr-par-1"
   region = "fr-par"
+  organization_id    = "3bfd4112-c8a8-41df-af67-f7fb7271648f"
 }

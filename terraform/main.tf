@@ -12,7 +12,7 @@ resource "scaleway_vpc_private_network" "this" {
   project_id = scaleway_account_project.this.id
   vpc_id = scaleway_vpc.this.id
   ipv4_subnet {
-    subnet = "10.0.0.0/24"
+    subnet = "10.0.0.0/8"
   }
 }
 
@@ -23,7 +23,6 @@ resource "scaleway_vpc_public_gateway" "this" {
 }
 
 resource scaleway_vpc_public_gateway_ip "this" {
-  reverse = "k8s.denolte.de"
   project_id = scaleway_account_project.this.id
 }
 

@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: terraform
+
 permissions:
   pull-requests: write
 
@@ -16,11 +20,9 @@ env:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-    env:
-      working-directory: terraform
-      terraform-version: 
     steps:
       - uses: actions/checkout@v4
+
       - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform fmt

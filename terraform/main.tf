@@ -12,7 +12,7 @@ resource "scaleway_vpc_private_network" "this" {
   project_id = scaleway_account_project.this.id
   vpc_id     = scaleway_vpc.this.id
   ipv4_subnet {
-    subnet = "10.0.0.0/8"
+    subnet = "10.0.0.0/24"
   }
 }
 
